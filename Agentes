@@ -1,0 +1,46 @@
+---
+- hosts: XXXXX
+ # user: root
+  sudo: yes
+  tasks:
+#    - name: instalar repositorio de NewRelic
+#      yum: name=https://yum.newrelic.com/pub/newrelic/el5/x86_64/newrelic-repo-5-3.noarch.rpm state=present
+    - name: instalar repositorio de epel
+      yum: name=http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm state=present
+    - name: actualizar repositorios
+      yum: name=* state=latest
+    ##
+    # Instalación de paquetes necesarios.
+    ##
+#    - name: General | Instalación de paquetes requeridos.
+#      action: yum name={{ item }} state=latest
+#      with_items:
+#        - newrelic-sysmond
+#        - nagios-plugins-nrpe.x86_64
+#        - nrpe.x86_64
+#      when: ansible_os_family == "RedHat"
+
+#    - lineinfile: dest=/etc/newrelic/nrsysmond.cfg regexp=^license_key=  line="license_key=a6723c226965290d9fcc97fe74753c4aa3fa817b"
+#    - lineinfile: dest=/etc/nagios/nrpe.cfg regexp=^dont_blame_nrpe= line=dont_blame_nrpe=1
+#    - lineinfile: dest=/etc/nagios/nrpe.cfg regexp=^allowed_hosts= line=allowed_hosts=10.58.108.50
+#    - lineinfile: dest=/etc/selinux/config regexp=^SELINUX= line=SELINUX=disabled
+
+    # Comandos post-instalacion
+    ##
+#    - command: /sbin/chkconfig nrpe on
+#    - command: /sbin/chkconfig newrelic-sysmond on
+    
+    # Reinicio de servicios
+    ##
+#    - name: Restart newrelic
+#      action: service name=newrelic-sysmond state=restarted
+#      when: ansible_os_family == "RedHat"
+#    - name: Restart nrpe
+#      action: service name=nrpe state=restarted
+#      when: ansible_os_family == "RedHat"
+#    - name: Restart newrelic
+#      action: service name=newrelic-sysmond state=restarted
+#      when: ansible_os_family == "CentOS"
+#    - name: Restart nrpe
+#      action: service name=nrpe state=restarted
+#      when: ansible_os_family == "CentOS"
